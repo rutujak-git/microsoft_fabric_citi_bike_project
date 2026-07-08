@@ -1,0 +1,2 @@
+# microsoft_fabric_stat_can_retail_trade_sale_project
+In Progress
