@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "RPT_CitiBike_Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7426ccd6-69b3-82fa-4576-f681c7b83352"
+  }
+}

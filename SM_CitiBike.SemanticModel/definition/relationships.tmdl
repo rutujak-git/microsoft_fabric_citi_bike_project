@@ -1,0 +1,21 @@
+relationship c4aef331-5a9f-3f13-7be2-250dd871b68b
+	relyOnReferentialIntegrity
+	fromColumn: fact_trip.rider_type_key
+	toColumn: dim_rider_type.rider_type_key
+
+relationship 007d28b5-3f6f-09f6-e001-82a1378032cb
+	isActive: false
+	relyOnReferentialIntegrity
+	fromColumn: fact_trip.end_station_key
+	toColumn: dim_station.station_key
+
+relationship 4d99c411-2d27-4a4b-f029-6d7dc6af0b5e
+	relyOnReferentialIntegrity
+	fromColumn: fact_trip.trip_date
+	toColumn: dim_date.date_key
+
+relationship 998d625f-aec6-6580-9a00-42ca9ec18534
+	relyOnReferentialIntegrity
+	fromColumn: fact_trip.start_station_key
+	toColumn: dim_station.station_key
+

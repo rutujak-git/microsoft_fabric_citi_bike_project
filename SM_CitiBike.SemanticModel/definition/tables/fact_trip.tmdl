@@ -1,0 +1,110 @@
+table fact_trip
+	lineageTag: 2b49f140-0e40-40c7-a3b2-134198e84067
+	sourceLineageTag: [gold].[fact_trip]
+
+	column ride_id
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 76bdf97d-e8d3-4d7a-adbb-0ef1fa976395
+		sourceLineageTag: ride_id
+		summarizeBy: none
+		sourceColumn: ride_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rideable_type
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: 3d6650d4-2587-4037-8ad6-67c9561fe6a1
+		sourceLineageTag: rideable_type
+		summarizeBy: none
+		sourceColumn: rideable_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_station_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9cec6d9f-74a2-4a5d-8a56-0304024c6336
+		sourceLineageTag: start_station_key
+		summarizeBy: none
+		sourceColumn: start_station_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_station_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4b182536-d368-4c02-b469-7bf7550f45d3
+		sourceLineageTag: end_station_key
+		summarizeBy: sum
+		sourceColumn: end_station_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column rider_type_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 398d9116-7c78-43d9-92b4-622cae2b003d
+		sourceLineageTag: rider_type_key
+		summarizeBy: none
+		sourceColumn: rider_type_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: d4661386-72f3-4698-99ca-0651279093f7
+		sourceLineageTag: trip_date
+		summarizeBy: none
+		sourceColumn: trip_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_hour
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 26ed70f6-3454-448e-b1bd-ee3d12bdbf7c
+		sourceLineageTag: start_hour
+		summarizeBy: sum
+		sourceColumn: start_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_duration_minutes
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 864b4b04-9844-4511-9c72-98566ace744f
+		sourceLineageTag: trip_duration_minutes
+		summarizeBy: sum
+		sourceColumn: trip_duration_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column duration_category
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: f7b6c838-7bf5-4705-bbe1-12f307b898d1
+		sourceLineageTag: duration_category
+		summarizeBy: none
+		sourceColumn: duration_category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_trip = entity
+		mode: directLake
+		source
+			entityName: fact_trip
+			schemaName: gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
