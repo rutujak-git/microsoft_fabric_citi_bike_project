@@ -1,0 +1,100 @@
+table _Measures
+	lineageTag: a8f78361-4ead-4340-8d7c-1915ba56f721
+
+	measure trips_ending_at_station = ```
+			
+			                            CALCULATE(
+			                                COUNTROWS(fact_trip),
+			                                USERELATIONSHIP(fact_trip[end_station_key],dim_station[station_key])
+			                            )
+			```
+		formatString: 0
+		lineageTag: a4941b7a-3440-4ce8-a78e-acf6833a0605
+
+	measure pct_of_filtered_total = ```
+			
+			                        DIVIDE(
+			                            COUNTROWS(fact_trip),
+			                            CALCULATE(COUNTROWS(fact_trip),ALLSELECTED(fact_trip))
+			                        )
+			```
+		lineageTag: ee70b11c-4d28-454d-a536-fe2c0c3b7cd0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure pct_of_grand_total =
+			DIVIDE(
+			    COUNTROWS(fact_trip),
+			    CALCULATE(COUNTROWS(fact_trip), ALL(fact_trip))
+			)
+		lineageTag: 08513fda-3ec6-47d5-bc88-3e1e82d22be4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure station_rank = ```
+			
+			                RANKX(
+			                    ALLSELECTED(dim_station[station_name]),
+			                    CALCULATE(COUNTROWS(fact_trip)),
+			                    ,
+			                    DESC
+			                )
+			```
+		formatString: 0
+		lineageTag: 7b62d003-defe-4bbc-80c8-9bf7643df000
+
+	measure Avg_Duration_vs_Overall = ```
+			
+			                            VAR CurrentAvg = AVERAGE(fact_trip[trip_duration_minutes])
+			                            VAR OverallAvg = CALCULATE(AVERAGE(fact_trip[trip_duration_minutes]), ALL(fact_trip))
+			                            RETURN
+			                                CurrentAvg - OverallAvg
+			```
+		lineageTag: 2f0b0b08-a3dd-435d-a2f0-cbb451f19790
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Rolling_7Day_Avg_Trips =
+			
+			AVERAGEX(
+			    DATESINPERIOD(dim_date[date_key], MAX(dim_date[date_key]), -7, DAY),
+			    CALCULATE(COUNTROWS(fact_trip))
+			)
+		lineageTag: 6160e4ff-088a-4451-b57f-0d6aa54c2938
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Trips' = COUNTROWS(fact_trip)
+		formatString: 0
+		lineageTag: cc1105dd-43be-469d-a106-2a01320f06cc
+
+	measure 'Avg Trip Duration' = AVERAGE(fact_trip[trip_duration_minutes])
+		lineageTag: bef32337-ed0e-48e7-9f65-884de81d26aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Member Rides' =
+			
+			DIVIDE(
+			    CALCULATE(COUNTROWS(fact_trip), dim_rider_type[rider_type] = "member"),
+			    COUNTROWS(fact_trip)
+			)
+		lineageTag: 6e43e141-10d9-4337-bdcb-1f1a680c7183
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		formatString: 0
+		lineageTag: 3b4af8cc-a400-4407-bd5a-4cfa1ad2425d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = {BLANK()}
+
+	annotation PBI_Id = a50b5fc7478045fb81aeb9a28f893e13
+

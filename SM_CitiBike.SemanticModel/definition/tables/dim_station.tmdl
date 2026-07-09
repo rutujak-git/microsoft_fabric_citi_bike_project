@@ -1,0 +1,58 @@
+table dim_station
+	lineageTag: 37d953ed-38da-4eff-82b9-400b0cc0d804
+	sourceLineageTag: [gold].[dim_station]
+
+	column station_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 44b4d916-adc2-4234-84e7-a86d5e180f76
+		sourceLineageTag: station_key
+		summarizeBy: none
+		sourceColumn: station_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_name
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: 1e79273b-3f94-468c-b9d8-ce35152ba462
+		sourceLineageTag: station_name
+		summarizeBy: none
+		sourceColumn: station_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3f0578b3-6ff3-4b7a-90ff-29f74de6bf94
+		sourceLineageTag: latitude
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a5e9ed3b-d469-4d38-a012-207c163f38d3
+		sourceLineageTag: longitude
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_station = entity
+		mode: directLake
+		source
+			entityName: dim_station
+			schemaName: gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

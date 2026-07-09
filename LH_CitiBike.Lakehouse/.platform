@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "LH_CitiBike"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9e8d8f0d-98ce-a9a0-41d5-b6f1107f9304"
+  }
+}

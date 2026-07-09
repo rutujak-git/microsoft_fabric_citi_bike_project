@@ -1,0 +1,65 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "DF_CitiBike_Ingest_Transform",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "202606-citibike-tripdata_1 csv": {
+      "queryId": "dd67dc16-bd2d-483e-8ff7-6c3b7e3ce7fe",
+      "queryName": "202606-citibike-tripdata_1 csv",
+      "loadEnabled": false
+    },
+    "202606-citibike-tripdata_2 csv": {
+      "queryId": "932f1cf5-f6f2-44b6-9e0b-33b59ca8d187",
+      "queryName": "202606-citibike-tripdata_2 csv",
+      "loadEnabled": false
+    },
+    "202606-citibike-tripdata_3 csv": {
+      "queryId": "eeb7d52a-827c-4cab-9f6b-9ccf25dd8167",
+      "queryName": "202606-citibike-tripdata_3 csv",
+      "loadEnabled": false
+    },
+    "202606-citibike-tripdata_4 csv": {
+      "queryId": "88e192bd-b58c-4f30-80aa-d757af7a8916",
+      "queryName": "202606-citibike-tripdata_4 csv",
+      "loadEnabled": false
+    },
+    "202606-citibike-tripdata_5 csv": {
+      "queryId": "c5d58c2b-1c4a-466c-a805-78ff759a2878",
+      "queryName": "202606-citibike-tripdata_5 csv",
+      "loadEnabled": false
+    },
+    "202606-citibike-tripdata_6 csv": {
+      "queryId": "5e749e6b-411c-4ef5-a317-a3650493a910",
+      "queryName": "202606-citibike-tripdata_6 csv",
+      "loadEnabled": false
+    },
+    "Append": {
+      "queryId": "d7268e2e-27e4-4958-95e7-7a109915c46a",
+      "queryName": "Append",
+      "loadEnabled": false
+    },
+    "Append_DataDestination": {
+      "queryId": "b1024890-14e1-4a3f-80b8-0c7e41176755",
+      "queryName": "Append_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "202606-citibike-tripdata_6 csv_DataDestination": {
+      "queryId": "33f7dc23-ad61-498b-8fcd-6a59f1c7d2e3",
+      "queryName": "202606-citibike-tripdata_6 csv_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"53fefe22-3680-43af-93cc-5cf05bd973f4\",\"DatasourceId\":\"cbd84376-24d1-414e-8d66-33d7d0f378e3\"}"
+    }
+  ]
+}

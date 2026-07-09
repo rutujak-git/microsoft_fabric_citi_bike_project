@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "DW_CitiBike",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a475d2ef-075d-b9eb-4e02-f38ddabd0e8a"
+  }
+}
