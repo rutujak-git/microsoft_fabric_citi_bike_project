@@ -1,0 +1,227 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "a8502abe5b4dec3e71c6",
+  "position": {
+    "x": 7.9379844961240309,
+    "y": 198.44961240310079,
+    "z": 7002,
+    "height": 234.1705426356589,
+    "width": 586.41860465116281,
+    "tabOrder": 7002
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "station_name"
+                }
+              },
+              "queryRef": "dim_station.station_name",
+              "nativeQueryRef": "station_name",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Trips"
+                }
+              },
+              "queryRef": "_Measures.Total Trips",
+              "nativeQueryRef": "Total Trips"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_station"
+                        }
+                      },
+                      "Property": "longitude"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(dim_station.longitude)",
+              "nativeQueryRef": "Average of longitude"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_station"
+                        }
+                      },
+                      "Property": "latitude"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(dim_station.latitude)",
+              "nativeQueryRef": "Average of latitude"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {
+            "fillRule": {
+              "linearGradient2": {
+                "min": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'minColor'"
+                      }
+                    }
+                  }
+                },
+                "max": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'maxColor'"
+                      }
+                    }
+                  }
+                },
+                "nullColoringStrategy": {
+                  "strategy": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'asZero'"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Station Activity Map'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "44edf71cffb5bc2a8503",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_station"
+              }
+            },
+            "Property": "station_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "19d6c9c538805c18090b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_station"
+                  }
+                },
+                "Property": "latitude"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "48220c1d7e199cc62e86",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_station"
+                  }
+                },
+                "Property": "longitude"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "13e6889642bf1bf9f9de",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Trips"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
